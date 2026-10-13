@@ -1,0 +1,1582 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>E-LKS Keanekaragaman Hayati Berbasis PBL | MAN Lombok Barat</title>
+	<meta name="description"
+		content="E-LKS 1–4 per pertemuan berbasis Problem Based Learning: tingkat & persebaran, faktor hilang, pelestarian, klasifikasi. Melatih berpikir kritis siswa MAN Lombok Barat. Bisa dibuka lewat link.">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<header class="topbar">
+		<div class="brand"><span class="logo">🌿</span><span>E-LKS Kehati<small>Biologi • PBL • MAN Lombok
+					Barat</small></span></div>
+		<div class="top-aksi">
+			<span class="chip">⭐ <b id="xp-text">0 XP</b></span>
+			<span class="timer" id="timer">00:00</span>
+			<button class="icon-btn" onclick="toggleTema()">🌙/☀️</button>
+		</div>
+	</header>
+
+	<div class="stepper-wrap">
+		<div class="stepper" id="stepper"></div>
+		<div class="progres"><i id="progress-fill"></i></div>
+		<p class="keterangan" id="progress-text" style="text-align:center;margin:.1rem 0 .5rem">Memuat…</p>
+	</div>
+
+	<div class="wrap" id="app">
+
+		<!-- ============ BERANDA ============ -->
+		<section class="stage" data-stage="beranda">
+			<div class="hero">
+				<div>
+					<span class="badge">E-LKS 1–4 • PROBLEM BASED LEARNING</span>
+					<h1>Belajar dari Masalah Nyata Lombok! 🌏</h1>
+					<p><b>4 E-LKS per pertemuan</b> melatih <b>berpikir kritis</b> siswa <b>MAN Lombok Barat</b>: dari misteri
+						fauna Lombok vs Bali, 6 kasus kerusakan, misi tim konservasi, sampai jadi ahli klasifikasi!</p>
+					<p><span id="db-status">Menyiapkan simpanan nilai…</span></p>
+					<div class="toolbar">
+						<button class="btn btn-primer" onclick="pergi('identitas')">Mulai ↓</button>
+						<button class="btn btn-ghost" style="border-color:#fff;color:#fff" onclick="pergi('galeri')">🖼️ Lihat
+							Galeri</button>
+					</div>
+				</div>
+				<div>
+					<img class="hero-img" src="assets/images/hutan.jpg"
+						data-fb="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=900&q=80"
+						onerror="gfb(this)" alt="Hutan hujan tropis"
+						onclick="bukaLightbox(this.src,'Hutan hujan tropis — rumah keanekaragaman hayati')"
+						referrerpolicy="no-referrer">
+					<p class="keterangan" style="color:#e8f5e9">Klik foto untuk memperbesar 🔍</p>
+					<div class="card" style="margin:.6rem 0;padding:.7rem"><b>⭐ XP & Lencana:</b>
+						<div class="xp"><i id="xp-bar"></i></div>
+						<div class="lencana" id="lencana"></div>
+					</div>
+				</div>
+			</div>
+			<div class="grid2">
+				<div class="card" style="margin:.4rem 0">
+					<img class="foto" src="assets/images/pasar.jpg"
+						data-fb="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80"
+						onerror="gfb(this)" alt="Pasar tradisional" loading="lazy"
+						onclick="bukaLightbox(this.src,'Pasar tradisional: varietas buah & padi lokal')"
+						referrerpolicy="no-referrer">
+					<h3>E-LKS 1 • Pertemuan 2</h3>
+					<p>Tingkat, persebaran & manfaat kehati. Misteri: fauna Lombok ≠ Bali!</p>
+					<button class="btn btn-sekunder btn-kecil" onclick="pergi('elks1-materi')">Buka E-LKS 1 →</button>
+				</div>
+				<div class="card" style="margin:.4rem 0">
+					<img class="foto" src="assets/images/sampah.jpg"
+						data-fb="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80"
+						onerror="gfb(this)" alt="Pesisir dan sampah plastik" loading="lazy"
+						onclick="bukaLightbox(this.src,'Sampah plastik mengancam biota pesisir')" referrerpolicy="no-referrer">
+					<h3>E-LKS 2 • Pertemuan 3</h3>
+					<p>Faktor hilangnya kehati: 6 kasus nyata untuk diselidiki.</p>
+					<button class="btn btn-sekunder btn-kecil" onclick="pergi('elks2-materi')">Buka E-LKS 2 →</button>
+				</div>
+				<div class="card" style="margin:.4rem 0">
+					<img class="foto" src="assets/images/gajah.jpg"
+						data-fb="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80"
+						onerror="gfb(this)" alt="Satwa dilindungi" loading="lazy"
+						onclick="bukaLightbox(this.src,'Satwa dilindungi butuh strategi konservasi')" referrerpolicy="no-referrer">
+					<h3>E-LKS 3 • Pertemuan 4</h3>
+					<p>Upaya pelestarian: jadi tim konservasi Lombok!</p>
+					<button class="btn btn-sekunder btn-kecil" onclick="pergi('elks3-materi')">Buka E-LKS 3 →</button>
+				</div>
+				<div class="card" style="margin:.4rem 0">
+					<img class="foto" src="assets/images/jamur.jpg"
+						data-fb="https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80"
+						onerror="gfb(this)" alt="Jamur" loading="lazy" onclick="bukaLightbox(this.src,'Jamur: kingdom Fungi')"
+						referrerpolicy="no-referrer">
+					<h3>E-LKS 4 • Pertemuan 5</h3>
+					<p>Klasifikasi makhluk hidup + kunci determinasi.</p>
+					<button class="btn btn-sekunder btn-kecil" onclick="pergi('elks4-materi')">Buka E-LKS 4 →</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ IDENTITAS ============ -->
+		<section class="stage" data-stage="identitas">
+			<div class="card">
+				<span class="tahap-tag">IDENTITAS PESERTA DIDIK</span>
+				<h2>🧑‍🎓 Identitas</h2>
+				<div class="grid2">
+					<div><label>Nama lengkap *</label><input type="text" id="nama" placeholder="cth: Siti Aisyah"></div>
+					<div><label>Madrasah</label><input type="text" id="sekolah" value="MAN Lombok Barat"></div>
+					<div><label>Kelas *</label><input type="text" id="kelas" placeholder="cth: X-1"></div>
+					<div><label>No. Absen</label><input type="number" id="absen" min="1" max="40"></div>
+					<div><label>Tanggal</label><input type="date" id="tgl"></div>
+				</div>
+				<div class="info" style="margin-top:.7rem">Jawabanmu <b>tersimpan otomatis</b> — aman pindah-pindah halaman.
+				</div>
+				<div class="navigasi"><span></span><button class="btn btn-primer" onclick="lanjutBerikutnya('identitas')">Lanjut
+						→</button></div>
+			</div>
+		</section>
+
+		<!-- ============ KONTEKS / RANCANGAN ============ -->
+		<section class="stage" data-stage="konteks">
+			<div class="card">
+				<span class="tahap-tag">RANCANGAN PENELITIAN</span>
+				<h2>📋 Rancangan E-LKS per Pertemuan</h2>
+				<div class="info"><b>🔬 Konteks:</b> E-LKS ini media pendukung <b>model Problem Based Learning</b> untuk melihat
+					<b>pengaruhnya terhadap kemampuan berpikir kritis siswa MAN Lombok Barat</b> (materi keanekaragaman hayati &
+					klasifikasi, Biologi Kelas X).</div>
+				<div style="overflow:auto">
+					<table class="tabel">
+						<tr>
+							<th>E-LKS</th>
+							<th>Materi</th>
+							<th>Masalah kontekstual</th>
+							<th>Contoh pertanyaan pemandu berpikir kritis</th>
+						</tr>
+						<tr>
+							<td><b>E-LKS 1</b></td>
+							<td>Pertemuan 2: tingkat, persebaran, fungsi & manfaat kehati</td>
+							<td>Fauna Pulau Lombok berbeda dengan Pulau Bali walaupun berdekatan, dan pasar tradisional menjual
+								beragam varietas buah & padi lokal. Mengapa kehati Indonesia tinggi & berbeda antardaerah, serta apa
+								manfaatnya?</td>
+							<td>(1) Apa inti permasalahan yang perlu dipecahkan? (2) Sebutkan contoh kehati gen, jenis, ekosistem +
+								dasar pembedanya. (3) Sumber mana paling dipercaya dan mengapa? (4) Simpulkan penyebab perbedaan
+								persebaran.</td>
+						</tr>
+						<tr>
+							<td><b>E-LKS 2</b></td>
+							<td>Pertemuan 3: faktor penyebab hilangnya kehati</td>
+							<td>Enam kasus: alih fungsi mangrove, sampah plastik & pencemaran, pemutihan karang, perburuan berlebihan,
+								spesies pendatang, monokultur & penebangan hutan.</td>
+							<td>(1) Faktor apa paling berperan pada kasus kelompokmu? Apa buktinya? (2) Apa dampaknya bagi ekosistem &
+								manusia? (3) Tunggal? Asumsi apa yang kamu gunakan? (4) Tindakan apa yang mencegahnya?</td>
+						</tr>
+						<tr>
+							<td><b>E-LKS 3</b></td>
+							<td>Pertemuan 4: upaya pelestarian kehati</td>
+							<td>Populasi tumbuhan/hewan langka & ekosistem sekitar Pulau Lombok terus menurun. Sebagai tim konservasi,
+								tentukan strategi pelestarian (in-situ/ex-situ) paling tepat.</td>
+							<td>(1) Apa ancaman utama? (2) Bandingkan kelebihan & keterbatasan in-situ vs ex-situ. (3) Solusi mana
+								kamu pilih & mengapa? (4) Apa peran yang dapat kamu lakukan?</td>
+						</tr>
+						<tr>
+							<td><b>E-LKS 4</b></td>
+							<td>Pertemuan 5: klasifikasi makhluk hidup</td>
+							<td>Sejumlah organisme (bakteri, jamur, lumut, paku, tumbuhan berbunga, hewan) ditemukan tanpa label.
+								Bagaimana mengelompokkannya ke kingdom yang tepat & apa dasarnya?</td>
+							<td>(1) Ciri apa dasar pengelompokan? (2) Susun kunci determinasi dikotomi sederhana. (3) Ke kingdom mana
+								tiap organisme & mengapa? (4) Definisikan istilah takson yang kamu gunakan.</td>
+						</tr>
+					</table>
+				</div>
+				<h3>🧩 Sintaks PBL ↔ Tahap E-LKS</h3>
+				<table class="tabel">
+					<tr>
+						<th>Fase PBL</th>
+						<th>Tahap E-LKS</th>
+					</tr>
+					<tr>
+						<td><b>1. Orientasi masalah</b></td>
+						<td>Masalah kontekstual tiap halaman materi E-LKS 1–4</td>
+					</tr>
+					<tr>
+						<td><b>2. Mengorganisasi</b></td>
+						<td>Halaman tugas E-LKS 1–4 (pertanyaan pemandu 1–2)</td>
+					</tr>
+					<tr>
+						<td><b>3. Penyelidikan</b></td>
+						<td>Materi, galeri gambar & cek pemahaman</td>
+					</tr>
+					<tr>
+						<td><b>4. Menyajikan</b></td>
+						<td>Pertanyaan pemandu 3–4 (solusi & aksi)</td>
+					</tr>
+					<tr>
+						<td><b>5. Evaluasi</b></td>
+						<td>Kuis, profil berpikir kritis & refleksi</td>
+					</tr>
+				</table>
+				<details class="baca">
+					<summary>👩‍🏫 Panduan pakai untuk penelitian (guru/peneliti)</summary>
+					<ol>
+						<li><b>Pertemuan 1:</b> pretest kemampuan berpikir kritis (instrumen tes) + pengenalan E-LKS & kelompok PBL
+							(4–5 siswa).</li>
+						<li><b>Pertemuan 2–5:</b> treatment — tiap pertemuan 1 E-LKS: orientasi masalah (10') → penyelidikan
+							kelompok dengan halaman materi+galeri (40') → presentasi solusi (20') → evaluasi & kuis (20'). Skor E-LKS
+							tersimpan otomatis + unduh rekap nilai per kelas.</li>
+						<li><b>Pertemuan 6:</b> posttest + refleksi. Bandingkan pretest–posttest (uji N-gain / uji-t) untuk menguji
+							pengaruh PBL berbantuan E-LKS. Profil 5 aspek di halaman Hasil memudahkan analisis indikator mana paling
+							meningkat.</li>
+						<li><b>Dokumentasi:</b> simpan file <b>Bank Data</b> tiap kelas ke folder
+							<b>bank-data</b> dan contoh laporan ke folder <b>hasil</b> sebagai bukti fisik penelitian.</li>
+					</ol>
+				</details>
+				<h3>📊 Bobot Nilai (total 100, KKM 75)</h3>
+				<table class="tabel">
+					<tr>
+						<th>E-LKS 1</th>
+						<th>E-LKS 2</th>
+						<th>E-LKS 3</th>
+						<th>E-LKS 4</th>
+						<th>Kuis PG</th>
+						<th>Isian</th>
+						<th>Uraian</th>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>10</td>
+						<td>10</td>
+						<td>10</td>
+						<td>40 (10×4)</td>
+						<td>10 (2×5)</td>
+						<td>10 (2×5)</td>
+					</tr>
+				</table>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('konteks')">← Kembali</button><button
+						class="btn btn-primer" onclick="lanjutBerikutnya('konteks')">Mulai E-LKS 1 →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ E-LKS 1 MATERI ============ -->
+		<section class="stage" data-stage="elks1-materi">
+			<div class="card">
+				<span class="tahap-tag">E-LKS 1 • PERTEMUAN 2 • MATERI</span>
+				<h2>📖 Tingkat, Persebaran & Manfaat Kehati</h2>
+				<div class="alert"><b>🧩 Masalah:</b> Fauna <b>Pulau Lombok berbeda dengan Pulau Bali</b> padahal hanya
+					dipisahkan Selat Lombok (±35 km)! Sementara pasar tradisional menjual banyak varietas buah & padi lokal.
+					<b>Mengapa kehati tinggi & berbeda antardaerah? Apa manfaatnya?</b></div>
+				<div class="grid2">
+					<div>
+						<img class="foto" src="assets/images/pasar.jpg"
+							data-fb="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Pasar tradisional" loading="lazy"
+							onclick="bukaLightbox(this.src,'Pasar tradisional: bukti kehati tingkat gen — varietas buah & padi lokal')"
+							referrerpolicy="no-referrer">
+						<p class="keterangan">Pasar = etalase kehati gen.
+						</p>
+					</div>
+					<div>
+						<img class="foto" src="assets/images/padi.jpg"
+							data-fb="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Sawah padi" loading="lazy"
+							onclick="bukaLightbox(this.src,'Sawah: padi IR8 vs Ciherang — satu spesies, beda gen')"
+							referrerpolicy="no-referrer">
+						<p class="keterangan">Sawah Lombok.</p>
+					</div>
+				</div>
+				<h3>Tiga tingkat kehati + dasar pembedanya</h3>
+				<table class="tabel">
+					<tr>
+						<th>Tingkat</th>
+						<th>Dasar pembeda</th>
+						<th>Contoh</th>
+					</tr>
+					<tr>
+						<td><b>🧬 Gen</b></td>
+						<td>Satu spesies, beda sifat; masih kawin fertil</td>
+						<td>Padi IR8 vs Ciherang; mawar merah vs putih; durian montong vs lokal</td>
+					</tr>
+					<tr>
+						<td><b>🐾 Jenis</b></td>
+						<td>Spesies berbeda; umumnya tak kawin fertil</td>
+						<td>Harimau sumatera vs singa; komodo vs biawak</td>
+					</tr>
+					<tr>
+						<td><b>🌊 Ekosistem</b></td>
+						<td>Habitat & interaksi berbeda</td>
+						<td>Hutan Sesaot vs terumbu karang vs sawah</td>
+					</tr>
+				</table>
+				<details class="baca">
+					<summary>🧬 Mengapa satu spesies bisa berbeda-beda? (penjelasan dalam)</summary>
+					<p>Setiap individu membawa <b>gen</b> (instruksi sifat dalam DNA). Versi berbeda dari gen yang sama disebut
+						<b>alel</b>. Perbedaan alel inilah sumber variasi tingkat gen, yang muncul karena:</p>
+					<ol>
+						<li><b>Mutasi</b> — perubahan acak susunan DNA (mis. padi yang tiba-tiba tahan wereng). Mutasi adalah bahan
+							mentah evolusi.</li>
+						<li><b>Rekombinasi saat perkawinan</b> — pengocokan gen ayah–ibu ketika meiosis & fertilisasi. Itu sebabnya
+							anak tidak sama persis dengan orang tuanya, dan biji dari satu buah mangga bisa tumbuh jadi pohon berbuah
+							beda rasa.</li>
+						<li><b>Persilangan (hibridisasi)</b> — manusia sengaja menyilangkan dua varietas (mis. padi lokal × padi
+							unggul) untuk menggabungkan keunggulan: tahan hama + rasa enak.</li>
+						<li><b>Seleksi & domestikasi</b> — selama ribuan tahun petani memilih biji terbaik untuk ditanam lagi,
+							sehingga terkumpul varietas lokal: beras merah Lombok, jagung pulut, durian montong vs durian lokal.</li>
+						<li><b>Adaptasi lingkungan</b> — populasi yang hidup di tempat berbeda menyeleksi sifat berbeda (tanaman
+							dataran tinggi vs pantai).</li>
+					</ol>
+					<p><b>Mengapa penting?</b> Variasi gen = <b>tabungan kelangsungan hidup</b>. Jika hama menyerang, selalu ada
+						individu yang kebal sehingga spesies tidak punah sekaligus. Sawah monovarietas (satu varietas saja) justru
+						rapuh — inilah hubungan materi ini dengan E-LKS 2 (kasus monokultur)!</p>
+				</details>
+				<details class="baca">
+					<summary>🆚 Bedakan ketiganya! + contoh jebakan + tips soal</summary>
+					<p><b>Kata kunci cepat:</b> ada kata <i>varietas/ras/bibit/unggul/lokal</i> → hampir pasti <b>gen</b>. Ada dua
+						<i>nama spesies berbeda</i> → <b>jenis</b>. Ada dua <i>tempat/habitat</i> → <b>ekosistem</b>.</p>
+					<table class="tabel">
+						<tr>
+							<th>Kasus</th>
+							<th>Jawaban & alasan</th>
+						</tr>
+						<tr>
+							<td>Kelapa gading vs kelapa hijau</td>
+							<td><b>Gen</b> — satu spesies (<i>Cocos nucifera</i>), beda warna buah.</td>
+						</tr>
+						<tr>
+							<td>Kelapa vs aren vs lontar</td>
+							<td><b>Jenis</b> — tiga spesies palem berbeda.</td>
+						</tr>
+						<tr>
+							<td>Kebun kelapa vs hutan mangrove</td>
+							<td><b>Ekosistem</b> — dua habitat berbeda.</td>
+						</tr>
+						<tr>
+							<td>Anjing kampung vs anjing herder</td>
+							<td><b>Gen</b> — satu spesies (<i>Canis familiaris</i>), beda ras.</td>
+						</tr>
+						<tr>
+							<td>Kucing vs harimau</td>
+							<td><b>Jenis</b> — spesies berbeda walau satu famili (Felidae).</td>
+						</tr>
+					</table>
+					<div class="salah-kaprah">⚠️ <b>Miskonsepsi 1:</b> “Beda warna/bentuk = beda spesies.” <b>Belum tentu!</b>
+						Mawar merah dan putih tetap satu spesies. <b>Miskonsepsi 2:</b> “Mirip = satu spesies.” Komodo dan biawak
+						mirip, tapi spesies berbeda. <b>Miskonsepsi 3:</b> “Ekosistem buatan tidak punya kehati.” Sawah pun punya
+						padi, katak, belut, dan mikroba!</div>
+				</details>
+				<h3>Misteri Lombok vs Bali: Garis Wallace!</h3>
+				<p>Selat Lombok yang dalam menjadi <b>pembatas biogeografi</b>: Bali ikut fauna <b>Asiatis</b> (harimau, gajah,
+					bekantan), Lombok masuk <b>Wallacea/peralihan</b>. Klik zonanya:</p>
+				<div class="peta">
+					<div>
+						<svg viewBox="0 0 300 130" style="width:100%;background:#e0f2e9;border-radius:12px" role="img"
+							aria-label="Peta zona fauna">
+							<rect x="8" y="20" width="90" height="90" rx="10" fill="#86efac" style="cursor:pointer"
+								onclick="pilihZona('barat')">
+								<title>Zona Barat</title>
+							</rect>
+							<rect x="105" y="20" width="90" height="90" rx="10" fill="#fcd34d" style="cursor:pointer"
+								onclick="pilihZona('tengah')">
+								<title>Zona Tengah</title>
+							</rect>
+							<rect x="202" y="20" width="90" height="90" rx="10" fill="#fca5a5" style="cursor:pointer"
+								onclick="pilihZona('timur')">
+								<title>Zona Timur</title>
+							</rect>
+							<text x="53" y="68" text-anchor="middle" font-size="13" font-weight="bold">BARAT</text>
+							<text x="150" y="68" text-anchor="middle" font-size="13" font-weight="bold">TENGAH</text>
+							<text x="247" y="68" text-anchor="middle" font-size="13" font-weight="bold">TIMUR</text>
+						</svg>
+						<div class="zona-btns">
+							<button class="zona-btn" data-zona="barat" onclick="pilihZona('barat')">🟢 Barat (Bali)</button>
+							<button class="zona-btn" data-zona="tengah" onclick="pilihZona('tengah')">🟡 Tengah (Lombok)</button>
+							<button class="zona-btn" data-zona="timur" onclick="pilihZona('timur')">🔴 Timur</button>
+						</div>
+					</div>
+					<div class="zona-kartu" id="zona-info">👆 <b>Klik zona</b> (+2 XP per zona).</div>
+				</div>
+				<details class="baca">
+					<summary>🌊 Mengapa selat sempit memisahkan fauna? (penjelasan dalam)</summary>
+					<p>Selat Lombok “hanya” ±35 km, tetapi <b>sangat dalam</b> (palung >300 m). Pada zaman es, permukaan laut
+						turun ±120 m: Sumatera–Jawa–Bali–Kalimantan menyatu dengan Asia (Paparan Sunda), sedangkan Lombok dan pulau
+						timurnya tetap terisolasi lautan dalam. Hewan darat Asia (harimau, gajah) <b>tidak pernah bisa
+							menyeberang</b>, sehingga:</p>
+					<ul>
+						<li><b>Barat (Asiatis):</b> mamalia besar mirip daratan Asia. Flora: meranti, keruing, rafflesia.</li>
+						<li><b>Tengah (Wallacea, termasuk Lombok):</b> campuran miskin mamalia besar + endemik unik. Flora: cendana
+							(NTT), kayu putih (Maluku), lontar.</li>
+						<li><b>Timur (Australis):</b> hewan berkantung & burung warna-warni. Flora: sagu, eukaliptus, matoa.</li>
+					</ul>
+					<p><b>Tiga garisnya:</b> <b>Wallace</b> (Wallace, 1859 — Selat Lombok & Makassar: Barat vs Tengah),
+						<b>Weber</b> (tengah Laut Banda: Tengah vs Timur), <b>Lydekker</b> (mengikuti kontur Papua/Sahul). Wallace
+						merumuskannya setelah 8 tahun menjelajah Nusantara — termasuk Lombok!</p>
+					<div class="tahukah">💡 <b>Tahukah kamu?</b> Burung bisa terbang menyeberang selat, sehingga perbedaan burung
+						Lombok–Bali lebih kecil daripada mamalia. Inilah bukti bahwa <b>cara berpindah</b> ikut menentukan
+						persebaran!</div>
+				</details>
+				<details class="baca">
+					<summary>🌦️ 5 faktor yang mengatur persebaran (lengkap + contoh Lombok)</summary>
+					<ol>
+						<li><b>Iklim:</b> NTB lebih kering → sabana & hutan musim (bukan hujan lebat). Cocok untuk lontar, asam,
+							padang gembala.</li>
+						<li><b>Tanah:</b> vulkanik Rinjani subur untuk tani; pasir pantai hanya untuk pandan, kelapa, cemara laut.
+						</li>
+						<li><b>Bentang alam:</b> Rinjani (3.726 m) membuat zona vegetasi berlapis: kebun → hutan pegunungan →
+							edelweis. Laut dalam = pemisah.</li>
+						<li><b>Makhluk hidup lain:</b> kompetisi pendatang vs lokal, predator, penyerbuk, penyebar biji.</li>
+						<li><b>Manusia & waktu:</b> perdagangan membawa jagung–kakao; transmigrasi membawa varietas padi baru.</li>
+					</ol>
+				</details>
+				<div class="grid3">
+					<div><img class="foto" src="assets/images/harimau.jpg"
+							data-fb="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Harimau" loading="lazy"
+							onclick="bukaLightbox(this.src,'Harimau sumatera — fauna Asiatis (ada di Bali purba, tidak di Lombok)')"
+							referrerpolicy="no-referrer">
+						<p class="keterangan">Harimau (Asiatis).</p>
+					</div>
+					<div><img class="foto" src="assets/images/komodo.jpg"
+							data-fb="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Komodo" loading="lazy"
+							onclick="bukaLightbox(this.src,'Komodo — endemik Wallacea timur Lombok')" referrerpolicy="no-referrer">
+						<p class="keterangan">Komodo (Wallacea).</p>
+					</div>
+					<div><img class="foto" src="assets/images/burung.jpg"
+							data-fb="https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1552728089-57bdde30beb1?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Burung" loading="lazy"
+							onclick="bukaLightbox(this.src,'Burung Wallacea — campuran Asia & Australia')"
+							referrerpolicy="no-referrer">
+						<p class="keterangan">Burung Wallacea.</p>
+					</div>
+				</div>
+				<h3>Manfaat kehati (super lengkap + contoh Lombok)</h3>
+				<table class="tabel">
+					<tr>
+						<th>Bidang</th>
+						<th>Cara kerja & contoh Lombok/NTB</th>
+					</tr>
+					<tr>
+						<td>🍚 Pangan & ketahanan pangan</td>
+						<td>Banyak varietas = cadangan jika satu gagal. Beras merah Lombok, jagung pulut, sukun, ubi kayu, ikan
+							laut, <b>mutiara</b> (tiram mutiara Lombok terkenal dunia!).</td>
+					</tr>
+					<tr>
+						<td>💊 Obat & biofarmaka</td>
+						<td>±40% obat modern berawal dari alam (kina→antimalaria). Jahe, temulawak, sambiloto, moringa/kelor — kelor
+							Lombok kaya gizi.</td>
+					</tr>
+					<tr>
+						<td>👕 Sandang & 🏠 papan</td>
+						<td>Kapas, serat rami; kayu jati, bambu, rotan. Bambu Lombok untuk kerajinan Sasak.</td>
+					</tr>
+					<tr>
+						<td>🌳 Jasa ekologi</td>
+						<td>Hutan Sesaot menyimpan air & cegah banjir; mangrove menahan abrasi + “karbon biru”; karang melindungi
+							pantai dari ombak; lebah & kupu penyerbuk kebun.</td>
+					</tr>
+					<tr>
+						<td>💰 Ekonomi</td>
+						<td>Ekowisata Rinjani & Senggigi, perikanan, rumput laut (budidaya pesisir Lombok Timur), madu hutan.</td>
+					</tr>
+					<tr>
+						<td>🔬 Ilmu & pemuliaan</td>
+						<td>Plasma nutfah padi lokal disilangkan jadi varietas unggul tahan hama dan iklim kering.</td>
+					</tr>
+					<tr>
+						<td>🕌 Budaya & spiritual</td>
+						<td>Lontar untuk lontar tulis, upacara adat memakai janur & bunga; tadabur alam menguatkan iman.</td>
+					</tr>
+					<tr>
+						<td>🎨 Estetika & rekreasi</td>
+						<td>Keindahan Rinjani, Gili, dan air terjun (Tiu Kelep, Benang Kelambu) menenangkan jiwa.</td>
+					</tr>
+				</table>
+				<details class="baca">
+					<summary>🔗 Mengapa manfaat ini terancam? (jembatan ke E-LKS 2)</summary>
+					<p>Setiap manfaat di atas bergantung pada <b>kehati yang utuh</b>. Jika mangrove dibabat (kasus 1), abrasi
+						menelan tambak dan jalan pesisir. Jika karang memutih (kasus 3), ikan pergi dan nelayan merugi. Jika
+						varietas padi lokal hilang diganti satu varietas (kasus 6), serangan hama bisa memusnahkan panen sekaligus.
+						<b>Melindungi kehati = melindungi dapur, dompet, dan masa depan kita.</b></p>
+				</details>
+				<div class="info">☪️ <b>Tadabur:</b> <i>“…Kami tumbuhkan padanya segala sesuatu menurut ukuran.”</i> (QS.
+					Al-Hijr: 19) — manusia khalifah (QS. Al-Baqarah: 30) wajib menjaga, bukan merusak.</div>
+				<div class="mini" data-mq="e1m1" data-kunci="B" data-bahas="Selat Lombok = Garis Wallace.">
+					<b>Cek pemahaman 1:</b> Batas fauna Bali (Asiatis) dan Lombok (Wallacea) adalah…
+					<label class="pil"><input type="radio" name="e1m1" value="A"> Garis Weber</label>
+					<label class="pil"><input type="radio" name="e1m1" value="B"> Garis Wallace (Selat Lombok)</label>
+					<label class="pil"><input type="radio" name="e1m1" value="C"> Garis khatulistiwa</label>
+					<p class="mini-fb"></p><button class="btn btn-sekunder btn-kecil" onclick="cekMini(this)">Periksa (+10
+						XP)</button>
+				</div>
+				<div class="mini" data-mq="e1m2" data-kunci="B" data-bahas="Satu spesies beda varietas = gen.">
+					<b>Cek pemahaman 2:</b> Beragam varietas buah & padi di pasar tradisional menunjukkan tingkat…
+					<label class="pil"><input type="radio" name="e1m2" value="A"> Ekosistem</label>
+					<label class="pil"><input type="radio" name="e1m2" value="B"> Gen</label>
+					<label class="pil"><input type="radio" name="e1m2" value="C"> Jenis</label>
+					<p class="mini-fb"></p><button class="btn btn-sekunder btn-kecil" onclick="cekMini(this)">Periksa (+10
+						XP)</button>
+				</div>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('elks1-materi')">←
+						Kembali</button><button class="btn btn-primer" onclick="lanjutBerikutnya('elks1-materi')">Kerjakan Tugas
+						E-LKS 1 →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ E-LKS 1 TUGAS ============ -->
+		<section class="stage" data-stage="elks1-tugas">
+			<div class="card">
+				<span class="tahap-tag">E-LKS 1 • TUGAS (BOBOT 10) • INTERPRETASI–INFERENSI</span>
+				<h2>🔍 Tugas E-LKS 1: Pecahkan Misteri Lombok–Bali</h2>
+				<div class="soal flash">
+					<p>(1) Apa <b>inti permasalahan</b> yang perlu dipecahkan dari wacana di atas?</p>
+					<label class="pil"><input type="radio" name="e1q1" value="A"> A. Mengapa harga buah di pasar naik</label>
+					<label class="pil"><input type="radio" name="e1q1" value="B"> B. Mengapa fauna Lombok–Bali berbeda & apa
+						penyebab serta manfaat kehati</label>
+					<label class="pil"><input type="radio" name="e1q1" value="C"> C. Berapa jumlah pulau di NTB</label>
+					<label class="pil"><input type="radio" name="e1q1" value="D"> D. Siapa penemu garis Wallace</label>
+				</div>
+				<div class="soal flash">
+					<p>(2) Sebutkan <b>contoh kehati gen, jenis, dan ekosistem</b> beserta dasar pembedanya!</p>
+					<textarea id="e1q2" rows="3"
+						placeholder="cth: Gen — padi IR8 vs Ciherang (satu spesies beda sifat); Jenis — komodo vs biawak (beda spesies); Ekosistem — hutan Sesaot vs sawah (beda habitat)…"></textarea>
+				</div>
+				<div class="soal flash">
+					<p>(3) Untuk menjawab misteri ini, <b>sumber mana yang paling dapat dipercaya</b> dan mengapa?</p>
+					<label class="pil"><input type="radio" name="e1q3" value="A"> A. Status media sosial viral</label>
+					<label class="pil"><input type="radio" name="e1q3" value="B"> B. Kata teman tanpa bukti</label>
+					<label class="pil"><input type="radio" name="e1q3" value="C"> C. Jurnal/buku teks/peneliti — karena berbasis
+						data & uji ahli</label>
+					<label class="pil"><input type="radio" name="e1q3" value="D"> D. Iklan produk</label>
+				</div>
+				<div class="soal flash">
+					<p>(4) <b>Simpulkan</b> penyebab perbedaan persebaran fauna Lombok–Bali!</p>
+					<textarea id="e1q4" rows="3"
+						placeholder="cth: Karena dipisahkan Selat Lombok (garis Wallace) yang dalam, ditambah perbedaan iklim dan sejarah geologi…"></textarea>
+				</div>
+				<div class="toolbar"><button class="btn btn-sekunder btn-kecil" onclick="periksaE1()">Periksa E-LKS 1</button>
+				</div>
+				<p id="e1-feedback" class="keterangan"></p>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('elks1-tugas')">← Kembali</button><button
+						class="btn btn-primer" onclick="lanjutBerikutnya('elks1-tugas')">E-LKS 2 →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ E-LKS 2 MATERI ============ -->
+		<section class="stage" data-stage="elks2-materi">
+			<div class="card">
+				<span class="tahap-tag">E-LKS 2 • PERTEMUAN 3 • MATERI</span>
+				<h2>⚠️ 6 Kasus Penurunan Kehati</h2>
+				<div class="alert"><b>🧩 Masalah:</b> Setiap kelompok menyelidiki <b>1 dari 6 kasus</b> berikut. Kumpulkan
+					bukti, analisis dampak, dan usulkan pencegahan!</div>
+				<div class="grid3">
+					<div><img class="foto" src="assets/images/mangrove.jpg"
+							data-fb="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Hutan mangrove" loading="lazy"
+							onclick="bukaLightbox(this.src,'Kasus 1: alih fungsi lahan mangrove jadi tambak')"
+							referrerpolicy="no-referrer"><b>1. Alih fungsi mangrove</b><br><span class="keterangan">Jadi
+							tambak/pemukiman → abrasi, udang hilang.</span></div>
+					<div><img class="foto" src="assets/images/sampah.jpg"
+							data-fb="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Sampah pesisir" loading="lazy"
+							onclick="bukaLightbox(this.src,'Kasus 2: sampah plastik & pencemaran pesisir')"
+							referrerpolicy="no-referrer"><b>2. Sampah & pencemaran</b><br><span class="keterangan">Plastik & limbah →
+							penyu & ikan terancam.</span></div>
+					<div><img class="foto" src="assets/images/bleaching.jpg"
+							data-fb="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Terumbu karang" loading="lazy"
+							onclick="bukaLightbox(this.src,'Kasus 3: pemutihan (bleaching) terumbu karang')"
+							referrerpolicy="no-referrer"><b>3. Pemutihan karang</b><br><span class="keterangan">Laut memanas → karang
+							memutih & mati.</span></div>
+					<div><img class="foto" src="assets/images/buru.jpg"
+							data-fb="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Satwa buruan" loading="lazy"
+							onclick="bukaLightbox(this.src,'Kasus 4: perburuan & penangkapan berlebihan')"
+							referrerpolicy="no-referrer"><b>4. Perburuan berlebihan</b><br><span class="keterangan">Diburu untuk
+							dagang & koleksi → populasi anjlok.</span></div>
+					<div><img class="foto" src="assets/images/invasif.jpg"
+							data-fb="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Danau dan spesies pendatang" loading="lazy"
+							onclick="bukaLightbox(this.src,'Kasus 5: spesies pendatang (eceng gondok, sapu-sapu)')"
+							referrerpolicy="no-referrer"><b>5. Spesies pendatang</b><br><span class="keterangan">Eceng gondok &
+							sapu-sapu menekan spesies lokal.</span></div>
+					<div><img class="foto" src="assets/images/monokultur.jpg"
+							data-fb="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Lahan monokultur" loading="lazy"
+							onclick="bukaLightbox(this.src,'Kasus 6: pertanian monokultur & penebangan hutan')"
+							referrerpolicy="no-referrer"><b>6. Monokultur & tebang hutan</b><br><span class="keterangan">Satu
+							komoditas + gundul → hama & banjir.</span></div>
+				</div>
+				<details class="baca" open>
+					<summary>🔬 Bedah 6 kasus: mekanisme kerusakan + contoh Lombok (wajib dibaca!)</summary>
+					<p><b>Kasus 1 — Alih fungsi mangrove.</b> Akar mangrove (Rhizophora, Avicennia) memerangkap lumpur, menjadi
+						“kamar bayi” udang–kepiting–ikan, dan menyimpan karbon 3–5× hutan darat (“karbon biru”). Dibabat jadi
+						tambak/pemukiman →
+					<div class="alur-dampak">mangrove hilang → abrasi + intrusi air asin → tambak gagal → nelayan merugi → karbon
+						terlepas → iklim makin panas</div> Contoh: pesisir Lombok Timur yang tambaknya jebol abrasi.</p>
+					<p><b>Kasus 2 — Sampah plastik & pencemaran.</b> Plastik butuh ±450 tahun terurai menjadi <b>mikroplastik</b>
+						yang dimakan plankton → ikan → manusia. Penyu mengira kantong plastik = ubur-ubur; limbah deterjen & oli
+						meracuni lamun.
+					<div class="alur-dampak">sampah dibuang sembarangan → laut tercemar → biota mati/terjerat → wisata Senggigi
+						sepi → ekonomi warga turun</div>
+					</p>
+					<p><b>Kasus 3 — Pemutihan karang (bleaching).</b> Warna karang berasal dari alga simbion <b>zooxanthellae</b>
+						yang berfotosintesis untuk karang. Suhu naik 1–2°C (El Niño + krisis iklim) → alga diusir → karang
+						putih–kelaparan–mati.
+					<div class="alur-dampak">laut memanas → bleaching → ikan karang pergi → tangkapan turun → pantai tak
+						terlindungi ombak</div> Indonesia di pusat Segitiga Karang dunia — kerusakannya rugi global!</p>
+					<p><b>Kasus 4 — Perburuan/penangkapan berlebihan.</b> Kakatua, nuri, telur penyu, dan teripang diburu melebihi
+						kecepatan berkembang biaknya.
+					<div class="alur-dampak">induk diburu → anakan sedikit → populasi anjlok → rantai makanan pincang (hama
+						meledak) → spesies punah lokal</div> Ciri perdagangan ilegal: harga selangit, tanpa izin BKSDA.</p>
+					<p><b>Kasus 5 — Spesies pendatang (invasif).</b> Eceng gondok menutup danau (cahaya & oksigen habis → ikan
+						mati), ikan sapu-sapu memangsa telur ikan lokal, keong mas melahap padi muda.
+					<div class="alur-dampak">pendatang lepas → tanpa musuh alami → meledak → spesies lokal kalah bersaing →
+						ekosistem dikuasai satu spesies</div> Pelajaran: jangan melepas hewan/pakan asing ke alam!</p>
+					<p><b>Kasus 6 — Monokultur & penebangan.</b> Satu varietas = satu kerentanan: hama yang cocok meledak tanpa
+						musuh alami (yang rumahnya ikut ditebang). Tanah gundul → longsor & banjir bandang.
+					<div class="alur-dampak">hutan dibabat → satwa kehilangan rumah → hama meledak → panen gagal → banjir & mata
+						air hilang</div> Bandingkan dengan kebun campuran (tumpangsari) yang stabil.</p>
+					<div class="salah-kaprah">⚠️ <b>Miskonsepsi:</b> “Satu penyebab, satu akibat.” Faktanya keenam kasus <b>saling
+							menguatkan</b>: penebangan → sedimentasi → karang tertutup lumpur → ikan hilang → nelayan mengebom →
+						karang hancur total. Inilah jawaban model untuk pertanyaan pemandu no. 3!</div>
+				</details>
+				<div class="mini" data-mq="e2m1" data-kunci="C" data-bahas="Habitat hilang = penyebab #1.">
+					<b>Cek pemahaman:</b> Penyebab utama hilangnya kehati adalah…
+					<label class="pil"><input type="radio" name="e2m1" value="A"> Fotosintesis</label>
+					<label class="pil"><input type="radio" name="e2m1" value="B"> Migrasi alami</label>
+					<label class="pil"><input type="radio" name="e2m1" value="C"> Alih fungsi habitat / deforestasi</label>
+					<p class="mini-fb"></p><button class="btn btn-sekunder btn-kecil" onclick="cekMini(this)">Periksa (+10
+						XP)</button>
+				</div>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('elks2-materi')">←
+						Kembali</button><button class="btn btn-primer" onclick="lanjutBerikutnya('elks2-materi')">Kerjakan Tugas
+						E-LKS 2 →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ E-LKS 2 TUGAS ============ -->
+		<section class="stage" data-stage="elks2-tugas">
+			<div class="card">
+				<span class="tahap-tag">E-LKS 2 • TUGAS (BOBOT 10) • ANALISIS–INFERENSI</span>
+				<h2>🧪 Tugas E-LKS 2: Selidiki Kasusmu!</h2>
+				<div class="soal flash">
+					<p>(1) Pilih <b>1 kasus</b> untuk kelompokmu, lalu tulis <b>bukti</b> yang kamu temukan!</p>
+					<select id="e2kasus">
+						<option value="">— pilih kasus —</option>
+						<option value="mangrove">1. Alih fungsi mangrove</option>
+						<option value="sampah">2. Sampah & pencemaran</option>
+						<option value="karang">3. Pemutihan karang</option>
+						<option value="buru">4. Perburuan berlebihan</option>
+						<option value="invasif">5. Spesies pendatang</option>
+						<option value="monokultur">6. Monokultur & tebang hutan</option>
+					</select>
+					<textarea id="e2bukti" rows="3"
+						placeholder="Bukti: data/foto hasil amatan, mis. 'tercatat 20 karung sampah di Pantai X, terlihat penyu terjerat…'"></textarea>
+				</div>
+				<div class="soal flash">
+					<p>(2) Apa <b>dampaknya bagi ekosistem dan manusia</b>?</p>
+					<textarea id="e2dampak" rows="3"
+						placeholder="cth: Ekosistem — rantai makanan putus; Manusia — nelayan kehilangan pendapatan…"></textarea>
+				</div>
+				<div class="soal flash">
+					<p>(3) Apakah penyebabnya <b>tunggal</b>? Tulis <b>asumsimu</b>!</p>
+					<label class="pil"><input type="radio" name="e2q3" value="A"> A. Ya, hanya satu penyebab</label>
+					<label class="pil"><input type="radio" name="e2q3" value="B"> B. Tidak, saling terkait (lapis
+						berlapis)</label>
+					<textarea id="e2asumsi" rows="2" placeholder="Asumsiku: …"></textarea>
+				</div>
+				<div class="soal flash">
+					<p>(4) <b>Tindakan apa</b> yang dapat mencegahnya?</p>
+					<textarea id="e2tindak" rows="3"
+						placeholder="cth: Reboisasi mangrove, pilah sampah, larang bom ikan, edukasi…"></textarea>
+				</div>
+				<div class="toolbar"><button class="btn btn-sekunder btn-kecil" onclick="periksaE2()">Periksa E-LKS 2</button>
+				</div>
+				<p id="e2-feedback" class="keterangan"></p>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('elks2-tugas')">← Kembali</button><button
+						class="btn btn-primer" onclick="lanjutBerikutnya('elks2-tugas')">E-LKS 3 →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ E-LKS 3 MATERI ============ -->
+		<section class="stage" data-stage="elks3-materi">
+			<div class="card">
+				<span class="tahap-tag">E-LKS 3 • PERTEMUAN 4 • MATERI</span>
+				<h2>🛡️ Pelestarian: Misi Tim Konservasi</h2>
+				<div class="alert"><b>🧩 Masalah:</b> Populasi tumbuhan/hewan langka & ekosistem sekitar Pulau Lombok terus
+					menurun. <b>Sebagai tim konservasi, tentukan strategi pelestarian (in-situ/ex-situ) paling tepat!</b></div>
+				<div class="grid2">
+					<div><img class="foto" src="assets/images/penyu.jpg"
+							data-fb="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Penyu" loading="lazy"
+							onclick="bukaLightbox(this.src,'Penyu: dilindungi UU, terancam sampah & perburuan telur')"
+							referrerpolicy="no-referrer">
+						<p class="keterangan">Penyu Senggigi.</p>
+					</div>
+					<div><img class="foto" src="assets/images/pantai.jpg"
+							data-fb="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Pantai Senggigi" loading="lazy"
+							onclick="bukaLightbox(this.src,'Pantai Senggigi: ekowisata + konservasi penyu')"
+							referrerpolicy="no-referrer">
+						<p class="keterangan">Pantai Senggigi.</p>
+					</div>
+				</div>
+				<h3>In-situ vs Ex-situ</h3>
+				<table class="tabel">
+					<tr>
+						<th></th>
+						<th>In-situ (habitat asli)</th>
+						<th>Ex-situ (luar habitat)</th>
+					</tr>
+					<tr>
+						<td><b>Contoh</b></td>
+						<td>Hutan Sesaot, TN Rinjani, suaka margasatwa, cagar alam</td>
+						<td>Penangkaran penyu, kebun raya, bank benih, kebun binatang</td>
+					</tr>
+					<tr>
+						<td><b>Kelebihan</b></td>
+						<td>Alami, evolusi berlanjut, murah jangka panjang</td>
+						<td>Terkontrol, aman dari pemburu, edukasi mudah</td>
+					</tr>
+					<tr>
+						<td><b>Keterbatasan</b></td>
+						<td>Sulit diawasi, rawan alih fungsi</td>
+						<td>Mahal, adaptasi liar menurun, daya tampung kecil</td>
+					</tr>
+				</table>
+				<div class="info">📜 Dasar hukum: <b>UU No. 5 Tahun 1990</b> tentang Konservasi SDA Hayati & Ekosistemnya + PP
+					No. 7/1999 (pengawetan jenis) & PP No. 8/1999 (pemanfaatan). Dilindungi: rafflesia, komodo, orangutan,
+					cendrawasih, penyu, kakatua, dan ratusan lainnya. Pelanggar bisa dipidana!</div>
+				<details class="baca">
+					<summary>🏞️ Peta contoh konservasi Indonesia (hafalkan 3 Lombok!)</summary>
+					<table class="tabel">
+						<tr>
+							<th>In-situ</th>
+							<th>Di mana</th>
+							<th>Melindungi apa</th>
+						</tr>
+						<tr>
+							<td>Hutan Sesaot (Wisata Alam)</td>
+							<td>Narmada, Lombok Barat ⭐</td>
+							<td>Mata air, burung, kupu-kupu</td>
+						</tr>
+						<tr>
+							<td>TN Gunung Rinjani</td>
+							<td>Lombok ⭐</td>
+							<td>Edelweis, elang, hutan pegunungan</td>
+						</tr>
+						<tr>
+							<td>Gili Matra (TWP)</td>
+							<td>Lombok Utara ⭐</td>
+							<td>Karang, penyu, ikan karang</td>
+						</tr>
+						<tr>
+							<td>TN Komodo</td>
+							<td>NTT</td>
+							<td>Komodo + savana + laut</td>
+						</tr>
+						<tr>
+							<td>TN Ujung Kulon</td>
+							<td>Banten</td>
+							<td>Badak jawa (±80 ekor tersisa!)</td>
+						</tr>
+						<tr>
+							<td>TN Way Kambas</td>
+							<td>Lampung</td>
+							<td>Gajah & harimau sumatera</td>
+						</tr>
+					</table>
+					<table class="tabel">
+						<tr>
+							<th>Ex-situ</th>
+							<th>Contoh</th>
+							<th>Fungsi</th>
+						</tr>
+						<tr>
+							<td>Penangkaran penyu</td>
+							<td>Senggigi & Gili ⭐</td>
+							<td>Telur ditetaskan aman, tukik dilepas</td>
+						</tr>
+						<tr>
+							<td>Kebun Raya</td>
+							<td>Bogor, Bedugul</td>
+							<td>Koleksi & riset tumbuhan langka</td>
+						</tr>
+						<tr>
+							<td>Bank benih</td>
+							<td>BB Biogen</td>
+							<td>Simpan plasma nutfah padi lokal</td>
+						</tr>
+						<tr>
+							<td>Kebun binatang</td>
+							<td>Surabaya, Ragunan</td>
+							<td>Breeding + edukasi publik</td>
+						</tr>
+					</table>
+				</details>
+				<details class="baca">
+					<summary>📝 7 langkah kerja tim konservasi (pakai untuk Tugas E-LKS 3!)</summary>
+					<ol>
+						<li><b>Kenali ancaman:</b> data populasi, peta sebaran, siapa pelaku (mis. pengambil telur penyu).</li>
+						<li><b>Tentukan target:</b> spesifik & terukur (“tukik dilepas naik 50% dalam setahun”).</li>
+						<li><b>Bandingkan opsi:</b> in-situ vs ex-situ vs kombinasi — nilai biaya, keberhasilan, penerimaan warga.
+						</li>
+						<li><b>Pilih & alasankan:</b> kombinasi biasanya menang (contoh: lindungi pantai bertelur + tetaskan
+							sebagian di penangkaran).</li>
+						<li><b>Libatkan warga:</b> mantan pengambil telur dilatih jadi penjaga + pemandu ekowisata (mata pencaharian
+							pengganti!).</li>
+						<li><b>Aksi + catat data:</b> patroli, penanaman, bersih pantai — semua didokumentasikan.</li>
+						<li><b>Evaluasi & rayakan:</b> bandingkan data awal–akhir, laporkan ke sekolah/dinas, rayakan rilis tukik!
+						</li>
+					</ol>
+					<div class="tahukah">💡 <b>Kisah nyata:</b> di banyak pantai Indonesia, program “tukik adopsi” membuat warga
+						<b>lebih untung menjaga daripada mengambil</b> — konservasi yang memperhatikan perut warga selalu lebih
+						awet!</div>
+				</details>
+				<div class="mini" data-mq="e3m1" data-kunci="B" data-bahas="TN = habitat asli = in-situ.">
+					<b>Cek pemahaman:</b> TN Rinjani & Hutan Sesaot termasuk konservasi…
+					<label class="pil"><input type="radio" name="e3m1" value="A"> Ex-situ</label>
+					<label class="pil"><input type="radio" name="e3m1" value="B"> In-situ</label>
+					<label class="pil"><input type="radio" name="e3m1" value="C"> Inseminasi</label>
+					<p class="mini-fb"></p><button class="btn btn-sekunder btn-kecil" onclick="cekMini(this)">Periksa (+10
+						XP)</button>
+				</div>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('elks3-materi')">←
+						Kembali</button><button class="btn btn-primer" onclick="lanjutBerikutnya('elks3-materi')">Kerjakan Tugas
+						E-LKS 3 →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ E-LKS 3 TUGAS ============ -->
+		<section class="stage" data-stage="elks3-tugas">
+			<div class="card">
+				<span class="tahap-tag">E-LKS 3 • TUGAS (BOBOT 10) • EVALUASI–INFERENSI</span>
+				<h2>🌱 Tugas E-LKS 3: Rapat Tim Konservasi</h2>
+				<div class="soal flash">
+					<p>(1) Apa <b>ancaman utama</b> pada jenis/ekosistem Lombok yang kamu pilih?</p>
+					<textarea id="e3ancam" rows="2"
+						placeholder="cth: Penyu Senggigi — sampah plastik & pengambilan telur…"></textarea>
+				</div>
+				<div class="soal flash">
+					<p>(2) <b>Bandingkan kelebihan dan keterbatasan</b> konservasi in-situ dan ex-situ!</p>
+					<textarea id="e3banding" rows="3"
+						placeholder="cth: In-situ kelebihannya alami, keterbatasannya sulit diawasi; Ex-situ kelebihannya terkontrol, keterbatasannya mahal…"></textarea>
+				</div>
+				<div class="soal flash">
+					<p>(3) <b>Solusi mana yang kamu pilih dan apa alasannya?</b></p>
+					<label class="pil"><input type="radio" name="e3q3" value="A"> A. In-situ saja</label>
+					<label class="pil"><input type="radio" name="e3q3" value="B"> B. Ex-situ saja</label>
+					<label class="pil"><input type="radio" name="e3q3" value="C"> C. Kombinasi keduanya</label>
+					<textarea id="e3alasan" rows="2" placeholder="Alasanku: …"></textarea>
+				</div>
+				<div class="soal flash">
+					<p>(4) Apa <b>peran yang dapat kamu lakukan</b> sebagai siswa MAN Lombok Barat?</p>
+					<textarea id="e3peran" rows="2" placeholder="cth: Tanam pohon, bersih pantai, edukasi adik kelas…"></textarea>
+				</div>
+				<div class="toolbar"><button class="btn btn-sekunder btn-kecil" onclick="periksaE3()">Periksa E-LKS 3</button>
+				</div>
+				<p id="e3-feedback" class="keterangan"></p>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('elks3-tugas')">← Kembali</button><button
+						class="btn btn-primer" onclick="lanjutBerikutnya('elks3-tugas')">E-LKS 4 →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ E-LKS 4 MATERI ============ -->
+		<section class="stage" data-stage="elks4-materi">
+			<div class="card">
+				<span class="tahap-tag">E-LKS 4 • PERTEMUAN 5 • MATERI</span>
+				<h2>🔬 Klasifikasi Makhluk Hidup</h2>
+				<div class="alert"><b>🧩 Masalah:</b> Ditemukan 6 organisme <b>tanpa label</b>: bakteri, jamur, lumut, paku,
+					tumbuhan berbunga (mawar), dan hewan (kucing). <b>Ke kingdom mana masing-masing & apa dasarnya?</b></div>
+				<div class="tabs">
+					<button class="tab-btn on" data-tabbtn="g4" onclick="pilihTab(this,'g4','pane-king')">5 Kingdom</button>
+					<button class="tab-btn" data-tabbtn="g4" onclick="pilihTab(this,'g4','pane-diko')">Kunci Dikotomi</button>
+					<button class="tab-btn" data-tabbtn="g4" onclick="pilihTab(this,'g4','pane-takson')">Takson</button>
+				</div>
+				<div class="pane on" id="pane-king" data-tabpane="g4">
+					<table class="tabel">
+						<tr>
+							<th>Kingdom</th>
+							<th>Ciri kunci</th>
+							<th>Contoh</th>
+						</tr>
+						<tr>
+							<td><b>Monera</b></td>
+							<td>Prokariot (tanpa membran inti), uniseluler</td>
+							<td>Bakteri (E. coli, sianobakteri)</td>
+						</tr>
+						<tr>
+							<td><b>Protista</b></td>
+							<td>Eukariot sederhana, umumnya uniseluler</td>
+							<td>Paramecium, ganggang hijau</td>
+						</tr>
+						<tr>
+							<td><b>Fungi</b></td>
+							<td>Dinding sel kitin, heterotrof (pengurai)</td>
+							<td>Jamur merang, ragi, kapang</td>
+						</tr>
+						<tr>
+							<td><b>Plantae</b></td>
+							<td>Dinding sel selulosa, klorofil, autotrof</td>
+							<td>Lumut, paku, mawar, padi</td>
+						</tr>
+						<tr>
+							<td><b>Animalia</b></td>
+							<td>Tanpa dinding sel, heterotrof, bergerak aktif</td>
+							<td>Kucing, ikan, burung, manusia</td>
+						</tr>
+					</table>
+					<details class="baca">
+						<summary>🦠 Bedah tiap kingdom (ciri + reproduksi + peranan)</summary>
+						<p><b>Monera (bakteri & sianobakteri):</b> prokariot — DNA telanjang di sitoplasma, dinding sel
+							peptidoglikan. Reproduksi: <b>pembelahan biner</b> (20 menit sekali!). Peranan: pengurai, pengikat
+							nitrogen (Rhizobium di akar kacang), penghasil yoghurt–tempe (Lactobacillus, ragi? ragi = Fungi!), tapi
+							juga patogen (TBC, kolera). Sianobakteri berfotosintesis → penghasil oksigen purba.</p>
+						<p><b>Protista:</b> “kerajaan sisa” eukariot sederhana — mirip hewan (Paramecium, bergerak dengan silia),
+							mirip tumbuhan (ganggang hijau, berklorofil), mirip jamur (jamur lendir). Hidup di air. Peranan: plankton
+							= dasar rantai makanan laut + penghasil ±50% oksigen bumi!</p>
+						<p><b>Fungi:</b> dinding <b>kitin</b>, heterotrof dengan <b>menyerap</b> makanan (saprofit/pengurai,
+							parasit, atau mikoriza bersimbiosis dengan akar). Reproduksi: <b>spora</b>. Peranan: pengurai
+							kayu–serasah, ragi tape–roti (<i>Saccharomyces</i>), penisilin (<i>Penicillium</i>), tapi juga panu &
+							busuk buah.</p>
+						<p><b>Plantae (tiga serangkai):</b> dinding <b>selulosa</b> + klorofil (autotrof). <b>Lumut (Bryophyta):</b>
+							tak berpembuluh, tak berakar sejati (rizoid), berumah dua (gametofit dominan), berkembang biak spora —
+							pionir di batu (<i>Sphagnum</i>). <b>Paku (Pteridophyta):</b> sudah berpembuluh + akar sejati, masih
+							berspora (suplir, paku tanduk rusa). <b>Berbiji (Spermatophyta):</b> terbuka/Gymnospermae (pinus, pakis
+							haji, melinjo) vs tertutup/Angiospermae (mawar, padi, mangga — berbunga & berbuah).</p>
+						<p><b>Animalia:</b> tanpa dinding sel, heterotrof dengan <b>menelan</b>, umumnya bergerak aktif & punya
+							sistem saraf–otot. Dibagi tak bertulang belakang (Avertebrata: serangga, moluska, cacing) dan bertulang
+							belakang (Vertebrata: ikan, amfibi, reptil, burung, mamalia — menyusui + berambut).</p>
+						<div class="salah-kaprah">⚠️ <b>Miskonsepsi:</b> “Bakteri & virus sama.” <b>Salah!</b> Bakteri = sel hidup
+							(Monera). <b>Virus bukan makhluk hidup</b> (tak bersel, hanya aktif dalam sel inang) sehingga <b>tidak
+								masuk kingdom mana pun</b>. “Jamur = tumbuhan.” <b>Salah!</b> Jamur tak berklorofil dan berdinding kitin
+							→ kingdom sendiri.</div>
+					</details>
+					<div class="grid3">
+						<div><img class="foto" src="assets/images/jamur.jpg"
+								data-fb="https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80"
+								onerror="gfb(this)" alt="Jamur" loading="lazy"
+								onclick="bukaLightbox(this.src,'Fungi: pengurai, dinding sel kitin')" referrerpolicy="no-referrer">
+							<p class="keterangan">Jamur → Fungi</p>
+						</div>
+						<div><img class="foto" src="assets/images/lumut.jpg"
+								data-fb="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80"
+								onerror="gfb(this)" alt="Lumut" loading="lazy"
+								onclick="bukaLightbox(this.src,'Lumut: Plantae tak berpembuluh, berkembang biak dengan spora')"
+								referrerpolicy="no-referrer">
+							<p class="keterangan">Lumut → Plantae</p>
+						</div>
+						<div><img class="foto" src="assets/images/bunga.jpg"
+								data-fb="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80"
+								onerror="gfb(this)" alt="Tumbuhan berbunga" loading="lazy"
+								onclick="bukaLightbox(this.src,'Mawar: Plantae berbiji tertutup (Angiospermae)')"
+								referrerpolicy="no-referrer">
+							<p class="keterangan">Mawar → Plantae</p>
+						</div>
+					</div>
+					<div class="grid2">
+						<div><img class="foto" src="assets/images/paku.jpg"
+								data-fb="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+								onerror="gfb(this)" alt="Tumbuhan paku" loading="lazy"
+								onclick="bukaLightbox(this.src,'Paku: Plantae berpembuluh, berspora')" referrerpolicy="no-referrer">
+							<p class="keterangan">Paku → Plantae</p>
+						</div>
+						<div><img class="foto" src="assets/images/burung.jpg"
+								data-fb="https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1552728089-57bdde30beb1?auto=format&fit=crop&w=800&q=80"
+								onerror="gfb(this)" alt="Hewan" loading="lazy"
+								onclick="bukaLightbox(this.src,'Burung: Animalia — tanpa dinding sel, bergerak aktif')"
+								referrerpolicy="no-referrer">
+							<p class="keterangan">Hewan → Animalia</p>
+						</div>
+					</div>
+				</div>
+				<div class="pane" id="pane-diko" data-tabpane="g4">
+					<p><b>Kunci determinasi dikotomi</b> = panduan berpasangan (a/b) untuk mengenali organisme. Contoh mini:</p>
+					<table class="tabel">
+						<tr>
+							<th>Langkah</th>
+							<th>Pilihan</th>
+							<th>Hasil</th>
+						</tr>
+						<tr>
+							<td>1a</td>
+							<td>Bersel satu, prokariot</td>
+							<td>→ <b>Monera</b></td>
+						</tr>
+						<tr>
+							<td>1b</td>
+							<td>Bersel banyak / eukariot … lanjut ke 2</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>2a</td>
+							<td>Berdinding sel + berklorofil</td>
+							<td>→ <b>Plantae</b></td>
+						</tr>
+						<tr>
+							<td>2b</td>
+							<td>Tidak berklorofil … lanjut ke 3</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>3a</td>
+							<td>Dinding sel kitin, pengurai</td>
+							<td>→ <b>Fungi</b></td>
+						</tr>
+						<tr>
+							<td>3b</td>
+							<td>Tanpa dinding sel, bergerak aktif</td>
+							<td>→ <b>Animalia</b></td>
+						</tr>
+					</table>
+					<details class="baca">
+						<summary>✍️ Cara memakai kunci + contoh terpecahkan</summary>
+						<p><b>Caranya:</b> mulai dari nomor 1, pilih a ATAU b yang cocok, ikuti panahnya. Contoh: meneliti lumut
+							hati (<i>Marchantia</i>): 1b (eukariot) → 2a (berklorofil) → <b>Plantae</b>; lalu lanjutkan: tak
+							berpembuluh + berspora → <b>lumut</b>. Meneliti kucing: 1b → 2b → 3b → <b>Animalia</b>; lalu: menyusui +
+							berambut → <b>mamalia</b>.</p>
+						<p><b>Syarat kunci yang baik:</b> tiap pasangan harus <b>berlawanan tegas</b> (berklorofil vs tidak), ciri
+							<b>mudah diamati</b>, dan mencakup semua kemungkinan. Itulah yang kamu nilai saat menyusun kunci di Tugas
+							E-LKS 4!</p>
+					</details>
+				</div>
+				<div class="pane" id="pane-takson" data-tabpane="g4">
+					<p><b>Takson</b> = kelompok/tingkatan klasifikasi: <b>Kingdom → Filum/Divisi → Kelas → Ordo → Famili → Genus →
+							Spesies</b>. Makin ke kanan makin spesifik. Jembatan hafalan: <b>K</b>a <b>F</b>ilip <b>K</b>e <b>O</b>
+						include <b>F</b>ilm <b>G</b>enre <b>S</b>eram? Buat versimu sendiri! (Contoh populer: “Kucing Fotogenik…”).
+					</p>
+					<table class="tabel">
+						<tr>
+							<th>Takson</th>
+							<th>Harimau sumatera 🐯</th>
+							<th>Padi 🌾</th>
+							<th>Jamur merang 🍄</th>
+						</tr>
+						<tr>
+							<td>Kingdom</td>
+							<td>Animalia</td>
+							<td>Plantae</td>
+							<td>Fungi</td>
+						</tr>
+						<tr>
+							<td>Filum/Divisi</td>
+							<td>Chordata</td>
+							<td>Anthophyta</td>
+							<td>Basidiomycota</td>
+						</tr>
+						<tr>
+							<td>Kelas</td>
+							<td>Mammalia</td>
+							<td>Monocotyledoneae</td>
+							<td>Basidiomycetes</td>
+						</tr>
+						<tr>
+							<td>Ordo</td>
+							<td>Carnivora</td>
+							<td>Poales</td>
+							<td>Agaricales</td>
+						</tr>
+						<tr>
+							<td>Famili</td>
+							<td>Felidae</td>
+							<td>Poaceae</td>
+							<td>Agaricaceae</td>
+						</tr>
+						<tr>
+							<td>Genus</td>
+							<td><i>Panthera</i></td>
+							<td><i>Oryza</i></td>
+							<td><i>Volvariella</i></td>
+						</tr>
+						<tr>
+							<td>Spesies</td>
+							<td><i>P. tigris sumatrae</i></td>
+							<td><i>O. sativa</i></td>
+							<td><i>V. volvacea</i></td>
+						</tr>
+					</table>
+					<p class="keterangan">Nama spesies memakai <b>tata nama ganda (binomial nomenklatur)</b> Linnaeus: <i>Genus +
+							epithet</i>, dicetak miring, genus kapital. Subspesies (sumatrae) opsional di belakang.</p>
+				</div>
+				<div class="mini" data-mq="e4m1" data-kunci="B" data-bahas="Jamur kitin & pengurai = Fungi.">
+					<b>Cek pemahaman 1:</b> Jamur masuk kingdom Fungi karena…
+					<label class="pil"><input type="radio" name="e4m1" value="A"> Berklorofil & berfotosintesis</label>
+					<label class="pil"><input type="radio" name="e4m1" value="B"> Dinding sel kitin & heterotrof pengurai</label>
+					<label class="pil"><input type="radio" name="e4m1" value="C"> Prokariot uniseluler</label>
+					<p class="mini-fb"></p><button class="btn btn-sekunder btn-kecil" onclick="cekMini(this)">Periksa (+10
+						XP)</button>
+				</div>
+				<div class="mini" data-mq="e4m2" data-kunci="C"
+					data-bahas="Urutan: kingdom paling luas, spesies paling sempit.">
+					<b>Cek pemahaman 2:</b> Urutan takson dari luas ke sempit adalah…
+					<label class="pil"><input type="radio" name="e4m2" value="A"> Spesies → genus → kingdom</label>
+					<label class="pil"><input type="radio" name="e4m2" value="B"> Kelas → kingdom → spesies</label>
+					<label class="pil"><input type="radio" name="e4m2" value="C"> Kingdom → filum → kelas → ordo → famili → genus
+						→ spesies</label>
+					<p class="mini-fb"></p><button class="btn btn-sekunder btn-kecil" onclick="cekMini(this)">Periksa (+10
+						XP)</button>
+				</div>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('elks4-materi')">←
+						Kembali</button><button class="btn btn-primer" onclick="lanjutBerikutnya('elks4-materi')">Kerjakan Tugas
+						E-LKS 4 →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ E-LKS 4 TUGAS ============ -->
+		<section class="stage" data-stage="elks4-tugas">
+			<div class="card">
+				<span class="tahap-tag">E-LKS 4 • TUGAS (BOBOT 10) • ANALISIS–INTERPRETASI</span>
+				<h2>🧫 Tugas E-LKS 4: Labelling 6 Organisme</h2>
+				<div class="soal flash">
+					<p>(1) <b>Ciri apa</b> yang dapat dijadikan dasar pengelompokan keenam organisme?</p>
+					<label class="pil"><input type="radio" name="e4q1" value="A"> A. Warna tubuhnya saja</label>
+					<label class="pil"><input type="radio" name="e4q1" value="B"> B. Struktur sel, dinding sel & cara memperoleh
+						makanan</label>
+					<label class="pil"><input type="radio" name="e4q1" value="C"> C. Ukuran tubuhnya saja</label>
+					<label class="pil"><input type="radio" name="e4q1" value="D"> D. Tempat pertama kali ditemukan</label>
+				</div>
+				<div class="soal flash">
+					<p>(2) <b>Susun kunci determinasi dikotomi sederhana</b> untuk keenam organisme! (format 1a/1b, 2a/2b…)</p>
+					<textarea id="e4kunci" rows="4"
+						placeholder="cth: 1a. Prokariot uniseluler → Monera (bakteri). 1b. Eukariot → lanjut 2. 2a. Berklorofil → Plantae (lumut, paku, mawar). 2b. Tak berklorofil → lanjut 3. 3a. Dinding kitin → Fungi (jamur). 3b. Tanpa dinding sel → Animalia (kucing)."></textarea>
+				</div>
+				<div class="soal flash">
+					<p>(3) <b>Ke kingdom mana</b> tiap organisme dikelompokkan dan mengapa? (pilih kingdomnya)</p>
+					<div class="grid2">
+						<div><label>🦠 Bakteri</label><select id="k_bakteri">
+								<option value="">—</option>
+								<option>Monera</option>
+								<option>Protista</option>
+								<option>Fungi</option>
+								<option>Plantae</option>
+								<option>Animalia</option>
+							</select></div>
+						<div><label>🍄 Jamur</label><select id="k_jamur">
+								<option value="">—</option>
+								<option>Monera</option>
+								<option>Protista</option>
+								<option>Fungi</option>
+								<option>Plantae</option>
+								<option>Animalia</option>
+							</select></div>
+						<div><label>🌱 Lumut</label><select id="k_lumut">
+								<option value="">—</option>
+								<option>Monera</option>
+								<option>Protista</option>
+								<option>Fungi</option>
+								<option>Plantae</option>
+								<option>Animalia</option>
+							</select></div>
+						<div><label>🌿 Paku</label><select id="k_paku">
+								<option value="">—</option>
+								<option>Monera</option>
+								<option>Protista</option>
+								<option>Fungi</option>
+								<option>Plantae</option>
+								<option>Animalia</option>
+							</select></div>
+						<div><label>🌹 Mawar</label><select id="k_mawar">
+								<option value="">—</option>
+								<option>Monera</option>
+								<option>Protista</option>
+								<option>Fungi</option>
+								<option>Plantae</option>
+								<option>Animalia</option>
+							</select></div>
+						<div><label>🐈 Kucing</label><select id="k_kucing">
+								<option value="">—</option>
+								<option>Monera</option>
+								<option>Protista</option>
+								<option>Fungi</option>
+								<option>Plantae</option>
+								<option>Animalia</option>
+							</select></div>
+					</div>
+				</div>
+				<div class="soal flash">
+					<p>(4) <b>Definisikan istilah takson</b> yang kamu gunakan!</p>
+					<textarea id="e4takson" rows="2"
+						placeholder="cth: Takson adalah tingkatan kelompok klasifikasi, mis. kingdom, filum, kelas, …, spesies."></textarea>
+				</div>
+				<div class="toolbar"><button class="btn btn-sekunder btn-kecil" onclick="periksaE4()">Periksa E-LKS 4</button>
+				</div>
+				<p id="e4-feedback" class="keterangan"></p>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('elks4-tugas')">← Kembali</button><button
+						class="btn btn-primer" onclick="lanjutBerikutnya('elks4-tugas')">Kuis →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ KUIS ============ -->
+		<section class="stage" data-stage="kuis">
+			<div class="card">
+				<span class="tahap-tag">KUIS PG (BOBOT 40) • EVALUASI</span>
+				<h2>✍️ Kuis Pilihan Ganda</h2>
+				<p class="keterangan" id="pg-progress">0/10 terjawab</p>
+				<div class="kuis-layout">
+					<div>
+						<div class="soal" id="soal-pg1">
+							<p>1. Sekebun mawar berbunga merah, putih, kuning padahal satu spesies. Ini tingkat… <label
+									class="ragu-cb"><input type="checkbox" id="ragu1"> ragu</label></p>
+							<label class="pil"><input type="radio" name="pg1" value="A"> A. Ekosistem</label><label class="pil"><input
+									type="radio" name="pg1" value="B"> B. Gen</label><label class="pil"><input type="radio" name="pg1"
+									value="C"> C. Jenis</label><label class="pil"><input type="radio" name="pg1" value="D"> D.
+								Populasi</label>
+						</div>
+						<div class="soal" id="soal-pg2">
+							<p>2. Harimau sumatera dan singa Afrika termasuk tingkat… <label class="ragu-cb"><input type="checkbox"
+										id="ragu2"> ragu</label></p>
+							<label class="pil"><input type="radio" name="pg2" value="A"> A. Gen</label><label class="pil"><input
+									type="radio" name="pg2" value="B"> B. Ekosistem</label><label class="pil"><input type="radio"
+									name="pg2" value="C"> C. Jenis/spesies</label><label class="pil"><input type="radio" name="pg2"
+									value="D"> D. Individu</label>
+						</div>
+						<div class="soal" id="soal-pg3">
+							<p>3. Perbedaan hutan hujan dan terumbu karang menunjukkan tingkat… <label class="ragu-cb"><input
+										type="checkbox" id="ragu3"> ragu</label></p>
+							<label class="pil"><input type="radio" name="pg3" value="A"> A. Gen</label><label class="pil"><input
+									type="radio" name="pg3" value="B"> B. Ekosistem</label><label class="pil"><input type="radio"
+									name="pg3" value="C"> C. Populasi</label><label class="pil"><input type="radio" name="pg3" value="D">
+								D. Komunitas saja</label>
+						</div>
+						<div class="soal" id="soal-pg4">
+							<p>4. Hewan endemik zona peralihan (Wallacea)… <label class="ragu-cb"><input type="checkbox" id="ragu4">
+									ragu</label></p>
+							<label class="pil"><input type="radio" name="pg4" value="A"> A. Orangutan – harimau</label><label
+								class="pil"><input type="radio" name="pg4" value="B"> B. Cendrawasih – kanguru pohon</label><label
+								class="pil"><input type="radio" name="pg4" value="C"> C. Komodo – anoa – babirusa</label><label
+								class="pil"><input type="radio" name="pg4" value="D"> D. Gajah – badak jawa</label>
+						</div>
+						<div class="soal" id="soal-pg5">
+							<p>5. TN Komodo dan TN Rinjani termasuk konservasi… <label class="ragu-cb"><input type="checkbox"
+										id="ragu5"> ragu</label></p>
+							<label class="pil"><input type="radio" name="pg5" value="A"> A. Ex-situ</label><label class="pil"><input
+									type="radio" name="pg5" value="B"> B. In-situ</label><label class="pil"><input type="radio" name="pg5"
+									value="C"> C. Inseminasi</label><label class="pil"><input type="radio" name="pg5" value="D"> D.
+								Isolasi</label>
+						</div>
+						<div class="soal" id="soal-pg6">
+							<p>6. Penyebab utama hilangnya kehati di Indonesia… <label class="ragu-cb"><input type="checkbox"
+										id="ragu6"> ragu</label></p>
+							<label class="pil"><input type="radio" name="pg6" value="A"> A. Fotosintesis</label><label
+								class="pil"><input type="radio" name="pg6" value="B"> B. Migrasi alami</label><label class="pil"><input
+									type="radio" name="pg6" value="C"> C. Alih fungsi habitat / deforestasi</label><label
+								class="pil"><input type="radio" name="pg6" value="D"> D. Perkembangbiakan</label>
+						</div>
+						<div class="soal" id="soal-pg7">
+							<p>7. Rafflesia arnoldii dilindungi karena… <label class="ragu-cb"><input type="checkbox" id="ragu7">
+									ragu</label></p>
+							<label class="pil"><input type="radio" name="pg7" value="A"> A. Beracun bagi manusia</label><label
+								class="pil"><input type="radio" name="pg7" value="B"> B. Endemik, langka, terancam punah</label><label
+								class="pil"><input type="radio" name="pg7" value="C"> C. Tumbuh di semua negara</label><label
+								class="pil"><input type="radio" name="pg7" value="D"> D. Berumur sangat pendek saja</label>
+						</div>
+						<div class="soal" id="soal-pg8">
+							<p>8. Padi IR8 dan Ciherang tingkat gen karena… <label class="ragu-cb"><input type="checkbox" id="ragu8">
+									ragu</label></p>
+							<label class="pil"><input type="radio" name="pg8" value="A"> A. Beda spesies</label><label
+								class="pil"><input type="radio" name="pg8" value="B"> B. Satu spesies, beda varietas/sifat</label><label
+								class="pil"><input type="radio" name="pg8" value="C"> C. Beda ekosistem</label><label class="pil"><input
+									type="radio" name="pg8" value="D"> D. Beda kingdom</label>
+						</div>
+						<div class="soal" id="soal-pg9">
+							<p>9. Yang termasuk ekosistem buatan… <label class="ragu-cb"><input type="checkbox" id="ragu9">
+									ragu</label></p>
+							<label class="pil"><input type="radio" name="pg9" value="A"> A. Hutan hujan – sabana</label><label
+								class="pil"><input type="radio" name="pg9" value="B"> B. Terumbu karang – mangrove</label><label
+								class="pil"><input type="radio" name="pg9" value="C"> C. Sawah – waduk – kebun</label><label
+								class="pil"><input type="radio" name="pg9" value="D"> D. Gurun – tundra</label>
+						</div>
+						<div class="soal" id="soal-pg10">
+							<p>10. Jamur merang masuk kingdom Fungi karena… <label class="ragu-cb"><input type="checkbox" id="ragu10">
+									ragu</label></p>
+							<label class="pil"><input type="radio" name="pg10" value="A"> A. Berklorofil</label><label
+								class="pil"><input type="radio" name="pg10" value="B"> B. Dinding sel kitin & heterotrof
+								pengurai</label><label class="pil"><input type="radio" name="pg10" value="C"> C. Prokariot</label><label
+								class="pil"><input type="radio" name="pg10" value="D"> D. Berbiji tertutup</label>
+						</div>
+					</div>
+					<aside class="nav-pg no-print"><b>Navigator</b>
+						<div class="grid" id="nav-pg-grid"></div>
+						<p class="keterangan">Hijau = terjawab. Klik nomor untuk lompat.</p>
+					</aside>
+				</div>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('kuis')">← Kembali</button><button
+						class="btn btn-primer" onclick="lanjutBerikutnya('kuis')">Lanjut →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ TUGAS ============ -->
+		<section class="stage" data-stage="tugas">
+			<div class="card">
+				<span class="tahap-tag">ISIAN (10) & URAIAN (10)</span>
+				<h2>📝 Isian Singkat & Uraian</h2>
+				<div class="soal">
+					<p>11. Variasi dalam satu spesies (padi IR8 vs Ciherang) = tingkat …</p><input type="text" id="isian1"
+						placeholder="jawab di sini">
+				</div>
+				<div class="soal">
+					<p>12. Lombok berada di zona … / fauna peralihan Indonesia bagian tengah.</p><input type="text" id="isian2"
+						placeholder="jawab di sini">
+				</div>
+				<div class="soal">
+					<p>13. Jelaskan perbedaan in-situ vs ex-situ + masing-masing 1 contoh di Lombok/NTB!</p><textarea id="uraian1"
+						rows="4" placeholder="Tulis jawabanmu…"></textarea>
+				</div>
+				<div class="soal">
+					<p>14. Sebutkan 2 ancaman kehati di Lombok Barat + 2 solusinya!</p><textarea id="uraian2" rows="4"
+						placeholder="Tulis jawabanmu…"></textarea>
+				</div>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('tugas')">← Kembali</button><button
+						class="btn btn-primer" onclick="lanjutBerikutnya('tugas')">Ke Hasil →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ HASIL ============ -->
+		<section class="stage" data-stage="hasil">
+			<div class="card">
+				<span class="tahap-tag">HASIL & DOKUMEN</span>
+				<h2>🏆 Refleksi Dulu, Lalu Hitung Nilai</h2>
+				<div class="grid2">
+					<div><label>Seberapa paham kamu sekarang? (1–5)</label>
+						<select id="ref1">
+							<option value="">— pilih —</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+					</div>
+					<div><label>Kesan belajar hari ini</label><input type="text" id="ref2"
+							placeholder="cth: seru, gambarnya banyak"></div>
+				</div>
+				<label>Aksi nyata yang akan kamu lakukan</label><input type="text" id="ref3"
+					placeholder="cth: menanam pohon & memilah sampah">
+				<div class="toolbar no-print" style="margin-top:.8rem">
+					<button class="btn btn-primer" onclick="hitungNilai()">✔ Hitung Nilai & Simpan</button>
+					<button class="btn btn-ghost btn-kecil" onclick="resetJawaban()">⟲ Ulangi dari awal</button>
+				</div>
+				<div id="hasil-ringkas">
+					<p class="keterangan">Nilai + profil berpikir kritis muncul di sini setelah dihitung.</p>
+				</div>
+				<div class="toolbar no-print">
+					<button class="btn btn-sekunder btn-kecil" onclick="cetakPDF()">🖨 Cetak / PDF</button>
+					<button class="btn btn-sekunder btn-kecil" onclick="unduhHasilHTML()">⬇ Unduh Laporan Hasil</button>
+					<button class="btn btn-sekunder btn-kecil" onclick="unduhCSV()">⬇ Unduh Rekap Nilai (Excel)</button>
+					<button class="btn btn-sekunder btn-kecil" onclick="unduhJSON()">⬇ Simpan Salinan Jawaban</button>
+					<button class="btn btn-sekunder btn-kecil" onclick="unduhSQLite()">🗄 Unduh Bank Data (untuk Guru)</button>
+				</div>
+				<div class="alert">Minta bantuan guru untuk menyimpan <b>Bank Data</b>. Laporan nilaimu bisa dicetak atau disimpan sebagai PDF.</div>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('hasil')">← Kembali</button><button
+						class="btn btn-primer" onclick="pergi('galeri')">Galeri →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ GALERI ============ -->
+		<section class="stage" data-stage="galeri">
+			<div class="card">
+				<span class="tahap-tag">GALERI CONTOH</span>
+				<h2>🖼️ Galeri Gambar Keanekaragaman Hayati</h2>
+				<p>Klik gambar untuk memperbesar. Semua gambar bisa diganti dengan foto aslimu (minta bantuan guru ya).</p>
+				<div class="galeri">
+					<figure><img class="foto" src="assets/images/pasar.jpg"
+							data-fb="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Pasar tradisional" loading="lazy"
+							onclick="bukaLightbox(this.src,'Pasar tradisional — kehati gen')" referrerpolicy="no-referrer">
+						<figcaption>🏪 Pasar tradisional</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/padi.jpg"
+							data-fb="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Sawah" loading="lazy" onclick="bukaLightbox(this.src,'Sawah — ekosistem buatan')"
+							referrerpolicy="no-referrer">
+						<figcaption>🌾 Sawah</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/harimau.jpg"
+							data-fb="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Harimau" loading="lazy"
+							onclick="bukaLightbox(this.src,'Harimau — fauna Asiatis')" referrerpolicy="no-referrer">
+						<figcaption>🐯 Harimau</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/komodo.jpg"
+							data-fb="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Komodo" loading="lazy"
+							onclick="bukaLightbox(this.src,'Komodo — endemik Wallacea')" referrerpolicy="no-referrer">
+						<figcaption>🦎 Komodo</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/orangutan.jpg"
+							data-fb="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1552728089-57bdde30beb1?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Primata" loading="lazy"
+							onclick="bukaLightbox(this.src,'Primata — fauna Asiatis')" referrerpolicy="no-referrer">
+						<figcaption>🦧 Primata</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/burung.jpg"
+							data-fb="https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1552728089-57bdde30beb1?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Burung" loading="lazy" onclick="bukaLightbox(this.src,'Burung Wallacea')"
+							referrerpolicy="no-referrer">
+						<figcaption>🐦 Burung</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/karang.jpg"
+							data-fb="https://images.unsplash.com/photo-1439405326854-014607f694d7?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Laut" loading="lazy"
+							onclick="bukaLightbox(this.src,'Terumbu karang — ekosistem laut')" referrerpolicy="no-referrer">
+						<figcaption>🪸 Karang</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/bleaching.jpg"
+							data-fb="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Snorkeling karang" loading="lazy"
+							onclick="bukaLightbox(this.src,'Ekosistem karang terancam pemutihan')" referrerpolicy="no-referrer">
+						<figcaption>🤿 Karang</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/penyu.jpg"
+							data-fb="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Penyu" loading="lazy" onclick="bukaLightbox(this.src,'Penyu — satwa dilindungi')"
+							referrerpolicy="no-referrer">
+						<figcaption>🐢 Penyu</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/pantai.jpg"
+							data-fb="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Pantai" loading="lazy"
+							onclick="bukaLightbox(this.src,'Pantai — wisata & konservasi')" referrerpolicy="no-referrer">
+						<figcaption>🏖️ Pantai</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/mangrove.jpg"
+							data-fb="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Hutan" loading="lazy" onclick="bukaLightbox(this.src,'Hutan — paru-paru dunia')"
+							referrerpolicy="no-referrer">
+						<figcaption>🌳 Hutan</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/gajah.jpg"
+							data-fb="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Gajah" loading="lazy" onclick="bukaLightbox(this.src,'Gajah — mamalia Asiatis')"
+							referrerpolicy="no-referrer">
+						<figcaption>🐘 Gajah</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/jamur.jpg"
+							data-fb="https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Jamur" loading="lazy" onclick="bukaLightbox(this.src,'Jamur — kingdom Fungi')"
+							referrerpolicy="no-referrer">
+						<figcaption>🍄 Jamur</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/lumut.jpg"
+							data-fb="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Lumut" loading="lazy"
+							onclick="bukaLightbox(this.src,'Lumut — Plantae tak berpembuluh')" referrerpolicy="no-referrer">
+						<figcaption>🌱 Lumut</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/paku.jpg"
+							data-fb="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Paku" loading="lazy" onclick="bukaLightbox(this.src,'Paku — Plantae berspora')"
+							referrerpolicy="no-referrer">
+						<figcaption>🌿 Paku</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/bunga.jpg"
+							data-fb="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Bunga" loading="lazy" onclick="bukaLightbox(this.src,'Mawar — Angiospermae')"
+							referrerpolicy="no-referrer">
+						<figcaption>🌸 Bunga</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/invasif.jpg"
+							data-fb="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Danau" loading="lazy"
+							onclick="bukaLightbox(this.src,'Danau — rentan spesies pendatang')" referrerpolicy="no-referrer">
+						<figcaption>🏞️ Danau</figcaption>
+					</figure>
+					<figure><img class="foto" src="assets/images/monokultur.jpg"
+							data-fb="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=800&q=80|https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?auto=format&fit=crop&w=800&q=80"
+							onerror="gfb(this)" alt="Lahan pertanian" loading="lazy"
+							onclick="bukaLightbox(this.src,'Monokultur menurunkan kehati gen')" referrerpolicy="no-referrer">
+						<figcaption>🚜 Lahan</figcaption>
+					</figure>
+				</div>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('galeri')">← Kembali</button><button
+						class="btn btn-primer" onclick="pergi('guru')">Halaman Guru →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ GURU ============ -->
+		<section class="stage" data-stage="guru">
+			<div class="card">
+				<span class="tahap-tag">HALAMAN GURU</span>
+				<h2>👩‍🏫 Kumpulan Nilai Siswa</h2>
+				<p class="keterangan" id="rekap-jumlah">Memuat…</p>
+				<div style="overflow:auto">
+					<table class="tabel">
+						<thead>
+							<tr>
+								<th>Nama</th>
+								<th>Kelas</th>
+								<th>Sekolah</th>
+								<th>Nilai</th>
+								<th>Predikat</th>
+								<th>Waktu</th>
+							</tr>
+						</thead>
+						<tbody id="rekap-body"></tbody>
+					</table>
+				</div>
+				<div class="toolbar no-print">
+					<button class="btn btn-ghost btn-kecil" onclick="unduhSQLite()">⬇ Simpan Bank Data</button>
+					<button class="btn btn-ghost btn-kecil" onclick="unduhCSV()">⬇ Simpan Rekap Nilai</button>
+					<label class="btn btn-ghost btn-kecil" style="cursor:pointer">⬆ Buka Bank Data <input type="file"
+							id="file-sqlite" accept=".sqlite,.db" hidden></label>
+					<button class="btn btn-ghost btn-kecil" onclick="hapusDB()">🗑 Hapus Semua Data</button>
+					<button class="btn btn-ghost btn-kecil" onclick="resetXP()">⭐ Reset XP</button>
+				</div>
+				<div class="info"><b>Kunci:</b> PG: 1-B, 2-C, 3-B, 4-C, 5-B, 6-C, 7-B, 8-B, 9-C, 10-B • E-LKS 1: B, C • E-LKS 2:
+					B • E-LKS 3: C • E-LKS 4: B + Monera/Fungi/Plantae×3/Animalia.</div>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('guru')">← Kembali</button><button
+						class="btn btn-primer" onclick="pergi('glosarium')">Glosarium →</button></div>
+			</div>
+		</section>
+
+		<!-- ============ GLOSARIUM ============ -->
+		<section class="stage" data-stage="glosarium">
+			<div class="card">
+				<span class="tahap-tag">GLOSARIUM</span>
+				<h2>📚 Istilah Penting</h2>
+				<div class="glos">
+					<div><b>Biodiversitas</b><br><span class="keterangan">Variasi makhluk hidup tingkat
+							gen–jenis–ekosistem.</span></div>
+					<div><b>Gen</b><br><span class="keterangan">Unit pewarisan sifat (DNA).</span></div>
+					<div><b>Spesies</b><br><span class="keterangan">Kelompok yang bisa kawin fertil.</span></div>
+					<div><b>Endemik</b><br><span class="keterangan">Hanya ada di satu daerah.</span></div>
+					<div><b>Ekosistem</b><br><span class="keterangan">Komunitas + lingkungan tak hidup yang berinteraksi.</span>
+					</div>
+					<div><b>Garis Wallace / Weber</b><br><span class="keterangan">Batas fauna Barat–Tengah / Tengah–Timur.</span>
+					</div>
+					<div><b>In-situ / Ex-situ</b><br><span class="keterangan">Konservasi di / di luar habitat asli.</span></div>
+					<div><b>Deforestasi</b><br><span class="keterangan">Penggundulan hutan.</span></div>
+					<div><b>Bleaching</b><br><span class="keterangan">Pemutihan karang akibat laut memanas.</span></div>
+					<div><b>Spesies invasif</b><br><span class="keterangan">Pendatang yang menekan spesies lokal.</span></div>
+					<div><b>Kingdom</b><br><span class="keterangan">Takson tertinggi: Monera, Protista, Fungi, Plantae,
+							Animalia.</span></div>
+					<div><b>Takson</b><br><span class="keterangan">Tingkatan klasifikasi: kingdom → spesies.</span></div>
+					<div><b>Dikotomi</b><br><span class="keterangan">Kunci determinasi berpasangan (a/b).</span></div>
+					<div><b>Monokultur</b><br><span class="keterangan">Satu komoditas; menurunkan kehati gen.</span></div>
+					<div><b>Ekowisata</b><br><span class="keterangan">Wisata edukasi ramah lingkungan.</span></div>
+					<div><b>Plasma nutfah</b><br><span class="keterangan">Sumber gen untuk pemuliaan.</span></div>
+					<div><b>Alel</b><br><span class="keterangan">Versi berbeda dari gen yang sama.</span></div>
+					<div><b>Mutasi</b><br><span class="keterangan">Perubahan acak susunan DNA.</span></div>
+					<div><b>Hibridisasi</b><br><span class="keterangan">Persilangan dua varietas/spesies.</span></div>
+					<div><b>Domestikasi</b><br><span class="keterangan">Penjinakan & seleksi oleh manusia.</span></div>
+					<div><b>Biogeografi</b><br><span class="keterangan">Ilmu pola sebaran makhluk hidup.</span></div>
+					<div><b>Karbon biru</b><br><span class="keterangan">Karbon tersimpan di mangrove/lamun.</span></div>
+					<div><b>Mikroplastik</b><br><span class="keterangan">Serpihan plastik &lt;5 mm pencemar laut.</span></div>
+					<div><b>Zooxanthellae</b><br><span class="keterangan">Alga simbion pemberi warna karang.</span></div>
+					<div><b>Prokariot / Eukariot</b><br><span class="keterangan">Tanpa / dengan membran inti sel.</span></div>
+					<div><b>Autotrof / Heterotrof</b><br><span class="keterangan">Membuat makanan sendiri / memakan organisme
+							lain.</span></div>
+					<div><b>Spora</b><br><span class="keterangan">Sel reproduksi lumut, paku & jamur.</span></div>
+					<div><b>Gametofit / Sporofit</b><br><span class="keterangan">Fase haploid / diploid tumbuhan.</span></div>
+					<div><b>Binomial nomenklatur</b><br><span class="keterangan">Tata nama ganda Linnaeus (Genus +
+							epithet).</span></div>
+					<div><b>Filum / Divisi</b><br><span class="keterangan">Takson di bawah kingdom (hewan / tumbuhan).</span>
+					</div>
+				</div>
+				<div class="navigasi"><button class="btn btn-ghost" onclick="kembaliKe('glosarium')">← Kembali</button><button
+						class="btn btn-primer" onclick="pergi('beranda')">🏠 Beranda</button></div>
+			</div>
+		</section>
+
+	</div>
+
+	<div id="lightbox" onclick="tutupLightbox()">
+		<div><img id="lightbox-img" alt="pratinjau">
+			<p id="lightbox-cap"></p>
+			<p class="keterangan" style="color:#fff">Klik di mana saja untuk tutup</p>
+		</div>
+	</div>
+	<canvas id="confetti"></canvas>
+	<div id="toast"></div>
+	<div id="cetak"></div>
+
+	<footer>
+		E-LKS 1–4 Berbasis PBL • Berpikir Kritis • MAN Lombok Barat<br>
+		Dibuat untuk pembelajaran • Nilai tersimpan otomatis di perangkat • Dapat dibuka lewat link
+	</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+	<script src="js/db.js"></script>
+	<script src="js/app.js"></script>
+</body>
+
+</html>
